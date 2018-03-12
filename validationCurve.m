@@ -38,7 +38,15 @@ error_val = zeros(length(lambda_vec), 1);
 %       end
 %
 %
-
+ for i = 1:length(lambda_vec)
+           lambda = lambda_vec(i);
+          [theta] = trainLinearReg(X,y, lambda);
+          %NOTE Remember here X and Y matrix are training matrix
+           [J_train, grad_train] = linearRegCostFunction(X, y, theta,0); 
+           [J_cv, grad_cv] = linearRegCostFunction(Xval, yval, theta,0);
+           error_train(i,:)= J_train;
+            error_val(i,:)=J_cv;
+%       end
 
 
 
